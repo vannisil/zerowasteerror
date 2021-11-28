@@ -46,8 +46,8 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatSelectModule,
     RouterModule.forRoot([
-      {path:'inizio', component: InizioComponent},
-      {path: '', redirectTo: '/inizio', pathMatch: 'full'},
+      {path:'home', component: HomeComponent},
+      {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]),
   ],
   providers: [],
