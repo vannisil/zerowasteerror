@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+      (click)="drawer.toggle()"
+      >
+    <mat-toolbar class="font1">
+      
+      Menu</mat-toolbar>
+    <mat-nav-list >
+      <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary" style="float: left; position: relative; right: -8px; bottom: -10px;">home</mat-icon>
+      <a mat-list-item routerLink='/inizio' class="font1"> Home</a>
+      <mat-icon color="primary" style="float: left; position: relative; right: -8px; bottom: -10px;"> present_to_all</mat-icon>
+      <a mat-list-item routerLink="/home" class="font1">Scansiona subito</a>
+      <mat-icon color="primary" style="float: left; position: relative; right: -8px; bottom: -10px;">assignment</mat-icon>
+      <a mat-list-item routerLink='/form' class="font1">Form</a>
+      <mat-icon color="primary" style="float: left; position: relative; right: -8px; bottom: -10px;">info</mat-icon>
+      <a mat-list-item routerLink="/riciclo" class="font1">Di più sul riciclo!</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="font1">
+        Zero Waste Error
+      </span>
+    </mat-toolbar>
+
+    <router-outlet>
+    </router-outlet>
+  
+  </mat-sidenav-content>
+</mat-sidenav-container>

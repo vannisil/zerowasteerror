@@ -1,0 +1,47 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <div align="left" style="position: relative; left: 17px; bottom: -10px">
+            <strong>1) Carica l'immagine di un rifiuto:</strong>
+          </div>
+          <div align="left" style="position: relative; top: -20px; right: -230px;"> 
+            <button mat-mini-fab color="primary">
+              <input type="file" accept="image/*" id="actual-btn" hidden>
+              <label for="actual-btn">
+                <mat-icon>cloud_upload</mat-icon>
+              </label>
+            </button>
+          </div>
+          </div>
+          <div align="left" style="position: relative; left: 17px; bottom: -10px">
+            <strong>2) Indica il materiale del tuo rifiuto</strong>
+          </div>
+          <div align="left" style="position: relative; left: 31px; bottom: -15px">
+            <mat-form-field appearance="fill">
+              <mat-label>Scegli un materiale</mat-label>
+              <mat-select>
+                <mat-option value="carta">Carta</mat-option>
+                <mat-option value="Plastica">Plastica</mat-option>
+                <mat-option value="Metallo">Metallo</mat-option>
+                <mat-option value="Vetro">Vetro</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div align=" end" >
+            <button mat-raised-button color="primary">
+              Invia
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
