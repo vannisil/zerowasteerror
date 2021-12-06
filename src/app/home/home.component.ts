@@ -13,12 +13,12 @@ export class HomeComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Clicca sul bottone in basso per scansionare un rifiuto', cols: 2, rows: 1 },
+          { title: 'Fotografa il tuo rifiuto e scopri dove buttarlo!', cols: 2, rows: 1 },
         ];
       }
 
       return [
-        { title: 'Clicca sul bottone in basso per scansionare un rifiuto', cols: 2, rows: 1 },
+        { title: 'Fotografa il tuo rifiuto e scopri dove buttarlo!', cols: 2, rows: 1 },
       ];
     })
   );
