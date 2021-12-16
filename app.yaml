@@ -1,0 +1,11 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: dist/zerowasteerror/index.html
+  upload: dist/zerowasteerror/index.html
+
+- url: /
+  static_dir: dist/zerowasteerror

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     InizioComponent,
     RicicloComponent,
-    FormComponent,
+    FormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { RouterModule } from '@angular/router';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    HttpClientModule,
     MatSelectModule,
     RouterModule.forRoot([
       {path:'home', component: HomeComponent},
