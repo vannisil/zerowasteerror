@@ -8,6 +8,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  imageUrl : string = "/assets/img/test.jpg";
+  
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -24,4 +26,5 @@ export class HomeComponent {
   );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
+  
 }

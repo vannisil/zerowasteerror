@@ -20,6 +20,8 @@ import { RicicloComponent } from './riciclo/riciclo.component';
 import { FormComponent } from './form/form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,6 +47,9 @@ import { RouterModule } from '@angular/router';
     MatCardModule,
     MatMenuModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path:'home', component: HomeComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
