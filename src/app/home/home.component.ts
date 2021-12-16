@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-home',
@@ -8,23 +10,22 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  imageUrl : string = "/assets/img/test.jpg";
-  
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Fotografa il tuo rifiuto e scopri dove buttarlo!', cols: 2, rows: 1 },
-        ];
-      }
+  rifiuto! : File;
 
-      return [
-        { title: 'Fotografa il tuo rifiuto e scopri dove buttarlo!', cols: 2, rows: 1 },
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor (private http: HttpClient) {}
   
+
+  onImageChanged(event : any) {
+    this.rifiuto = event.target.files[0];
+  }
+
+  newRubbish() {
+    const uploadData = new FormData;
+    uploadData.append('rifiuto', this.rifiuto, this.rifiuto.name);
+    this.http.post('https://0.0.0.0/prova', uploadData).subscribe (
+      data => console.log(data),
+      error => console.log(error)
+    );
+  }
 }
