@@ -15,13 +15,13 @@ export class HomeComponent {
     this.myInputVariable.nativeElement.value= '';
   }
   /** Based on the screen size, switch from standard to one column per row */
-  rifiuto! : File;
+  waste! : File;
   constructor (private http: HttpClient,
     public dialog: MatDialog) {}
   
 
   onImageChanged(event : any) {
-    this.rifiuto = event.target.files[0];
+    this.waste = event.target.files[0];
   }
 
 
@@ -34,7 +34,7 @@ export class HomeComponent {
 
   newRubbish() {
     const uploadData = new FormData;
-    uploadData.append('rifiuto', this.rifiuto, this.rifiuto.name);
+    uploadData.append('rifiuto', this.waste);
     this.http.post('https://0.0.0.0/prova', uploadData).subscribe (
       data => console.log(data),
       error => console.log(error)
