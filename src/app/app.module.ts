@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -22,6 +22,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     InizioComponent,
     RicicloComponent,
     FormComponent,
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,12 +45,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatButtonModule,
     LayoutModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    MatDialogModule,
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,

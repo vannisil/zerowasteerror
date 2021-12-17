@@ -3,14 +3,19 @@
     Poi, clicca sul tasto "Carica!" e scopri dove differenziare il tuo rifiuto!
   </mat-card-title>
   <mat-card-actions>
+    <div>
     <button mat-button>
       <label>
         Scegli un'immagine
         <input #rifiuto type="file" (change)="onImageChanged($event)" hidden/>
       </label>
     </button>
-    <button mat-button (click)="newRubbish()" [disabled]="rifiuto.value == ''">
+    <button #upload mat-button (click)="openDialog()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
       Carica!
     </button>
+  </div>
+  <div align="end">
+    <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''"(click)="reset()">Annulla</button>
+  </div>
   </mat-card-actions>
 </mat-card>
