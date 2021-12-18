@@ -10,7 +10,7 @@
         <input #rifiuto type="file" (change)="onImageChanged($event)" hidden/>
       </label>
     </button>
-    <button #upload mat-button (click)="openDialog()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
+    <button #upload mat-flat-button color="accent" (click)="openDialog()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
       Carica!
     </button>
   </div>

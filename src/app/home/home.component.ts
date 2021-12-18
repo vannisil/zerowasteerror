@@ -10,6 +10,8 @@ import { getLocaleNumberFormat } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  title= 'image-gallery';
+  public data: any=[];
   @ViewChild('rifiuto') myInputVariable!:ElementRef;
   reset() {
     this.myInputVariable.nativeElement.value= '';
@@ -40,6 +42,4 @@ export class HomeComponent {
       error => console.log(error)
     );
   }
- 
-
 }

@@ -1,9 +1,9 @@
 <mat-dialog-content>
-    <h2 mat-dialog-title>
-        <td>Il tuo rifiuto è di</td>
-        <tr *ngFor="let rifiuto of rifiuto"></tr>
-        <td><span>{{rifiuto}}</span></td>
-    </h2>
+    <div *ngFor="let rifiuto of data">
+        <h2 mat-dialog-title *ngIf="(rifiuto.id == 1)">
+            Il tuo rifiuto è di {{rifiuto.name}}. Smaltiscilo nell'apposito contenitore!
+         </h2>
+    </div>
         <button mat-button mat-dialog-close (click)="reload()">Chiudi</button>
         <button mat-button mat-dialog-close>Il risultato è errato?</button>
 </mat-dialog-content>

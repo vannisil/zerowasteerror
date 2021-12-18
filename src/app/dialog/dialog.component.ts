@@ -4,13 +4,9 @@ import { HomeComponent } from '../home/home.component';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
+import { KeyedRead, ThrowStmt } from '@angular/compiler';
+import { Time } from '@angular/common';
 
-export class Rifiuti {
-  constructor(
-    public lable: string 
-  ) {}
-}
 
 @Component({
   selector: 'app-dialog',
@@ -18,7 +14,8 @@ export class Rifiuti {
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit{
-  rifiuto!: Rifiuti[];
+  public data: any=[];
+
   reload(){
     window.location.reload();
   }
@@ -26,15 +23,15 @@ export class DialogComponent implements OnInit{
    }
 
   ngOnInit(): void {
-    this.getRifiuti();
+    this.getData();
+
   }
-  getRifiuti() {
-    this.http.get<any>('localhost').subscribe(
-      response => {
-        console.log(response);
-        this.rifiuto = response;
-      }
-    )
+  getData() {
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    this.http.get(url).subscribe((res)=>{
+      this.data=res
+      console.log(this.data);
+    })
   }
 
 }
