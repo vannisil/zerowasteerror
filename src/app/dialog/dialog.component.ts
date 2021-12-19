@@ -23,7 +23,7 @@ export class DialogComponent implements OnInit{
    }
 
   ngOnInit(): void {
-    this.getData();
+    this.getResponse();
 
   }
   getData() {
@@ -33,5 +33,10 @@ export class DialogComponent implements OnInit{
       console.log(this.etichetta);
     })
   }
-
+  getResponse() {
+  this.http.post('your_url', JSON.stringify('data_to_be_sent')).subscribe((response)=>{
+    let result=response;
+    console.log(result);
+ });
+}
 }
