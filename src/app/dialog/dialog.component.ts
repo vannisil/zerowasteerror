@@ -14,7 +14,7 @@ import { Time } from '@angular/common';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit{
-  public data: any=[];
+  public etichetta: any=[];
 
   reload(){
     window.location.reload();
@@ -29,8 +29,8 @@ export class DialogComponent implements OnInit{
   getData() {
     const url = 'https://jsonplaceholder.typicode.com/users'
     this.http.get(url).subscribe((res)=>{
-      this.data=res
-      console.log(this.data);
+      this.etichetta=res
+      console.log(this.etichetta);
     })
   }
 
