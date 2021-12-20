@@ -10,12 +10,22 @@
         <input #rifiuto type="file" (change)="onImageChanged($event)" hidden/>
       </label>
     </button>
-    <button #upload mat-flat-button color="accent" (click)="openDialog()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
-      Carica!
+    <button #upload mat-flat-button color="accent" (click)="onclick()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
+      {{ReadMore?"Carica!":"Carica!"}}
     </button>
   </div>
   <div align="end">
-    <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''"(click)="reset()">Annulla</button>
+    <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''"(click)="reset()" (click)="onclick()">Annulla</button>
   </div>
+  <div *ngIf="loaderService.isLoading | async" class="loader-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+  <ng-container *ngIf="visible">
+    <div class="center">
+      <h4>
+        {{json}}
+      </h4>
+    </div>
+  </ng-container>
   </mat-card-actions>
 </mat-card>

@@ -20,12 +20,12 @@ import { RicicloComponent } from './riciclo/riciclo.component';
 import { FormComponent } from './form/form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DialogComponent } from './dialog/dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { InterceptorService } from './loader/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -56,13 +56,16 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'home', component: HomeComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]),
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
