@@ -33,8 +33,9 @@ export class FormComponent {
     }
     waste!: string;
     json: any;
-    clickMe() {
-      console.log(this.waste);
+
+    reload(){
+      window.location.reload();
     }
     getImageForm() {
       this.http.get('https://httpbin.org/get').toPromise().then((data: any)=>{
