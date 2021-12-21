@@ -42,10 +42,10 @@ export class HomeComponent {
 
   newRubbish() {
     const uploadData = new FormData;
-    uploadData.append('rifiuto', this.waste);
+    uploadData.append('waste', this.waste);
     this.http.post('https://httpbin.org/post', uploadData).toPromise().then((data: any)=> {
-      console.log(data.json);
-      this.json = JSON.stringify(data.json);
+      console.log(data);
+      this.json = JSON.stringify(data);
     }
     )
   }

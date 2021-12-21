@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AddFormService } from './add-form.service';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 
 @Component({
   selector: 'app-form',
@@ -23,5 +27,32 @@ export class FormComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    public http: HttpClient,
+    private addForm: AddFormService) {
+    }
+    waste!: string;
+    json: any;
+    clickMe() {
+      console.log(this.waste);
+    }
+    getImageForm() {
+      this.http.get('https://httpbin.org/get').toPromise().then((data: any)=>{
+        console.log(data.url);
+        this.json = JSON.stringify(data.url);
+        this.waste = JSON.stringify(data.url);
+      })
+    }
+    addLable = new FormGroup ({
+      lable: new FormControl(''),
+      waste: new FormControl('')
+    })
+    saveData() {
+      this.addForm.saveFormData(this.addLable.value).subscribe((result)=>{
+        console.log(result);
+      });
+    }
+    addText() {
+      
+    }
 }
