@@ -1,9 +1,14 @@
 <mat-dialog-content>
-    <div *ngFor="let rifiuto of etichetta">
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    <ng-container *ngIf="visible">
+    <div *ngFor="let rifiuto of json">
         <h2 mat-dialog-title *ngIf="(rifiuto.id == 1)">
             Il tuo rifiuto è di {{rifiuto.name}}. Smaltiscilo nell'apposito contenitore!
          </h2>
     </div>
         <button mat-button mat-dialog-close (click)="reload()">Chiudi</button>
         <button mat-button mat-dialog-close>Il risultato è errato?</button>
+    </ng-container>
 </mat-dialog-content>

@@ -31,22 +31,44 @@ export class FormComponent {
     public http: HttpClient,
     private addForm: AddFormService) {
     }
-    waste!: string;
+    formImage:any=[];
+    max!: number;
+    id!: any;
+    waste!: any;
+    confidence!: any;
     json: any;
 
     reload(){
       window.location.reload();
     }
+    
     getImageForm() {
-      this.http.get('https://httpbin.org/get').toPromise().then((data: any)=>{
-        console.log(data.url);
-        this.json = JSON.stringify(data.url);
-        this.waste = JSON.stringify(data.url);
+      this.http.get('http://127.0.0.1:8000/retrieve/').toPromise().then((data: any)=>{
+        console.log(data);
+        this.formImage = data;
+        this.id = this.getRandomInt(80,100);
+        console.log(this.id);
       })
     }
+    getImageForm1() {
+      this.id = this.getRandomInt(40,50);
+      this.http.get('http://127.0.0.1:8000/retrieve/', this.id).toPromise().then((data1:any)=>{
+        console.log(data1);
+        console.log(this.id);
+        this.json= JSON.stringify(data1);
+    })
+    }
+
+    getRandomInt(min:any, max:any) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    }
     addLable = new FormGroup ({
+      id: new FormControl(''),
+      waste: new FormControl(''),
       lable: new FormControl(''),
-      waste: new FormControl('')
+      confidence: new FormControl('')
     })
     saveData() {
       this.addForm.saveFormData(this.addLable.value).subscribe((result)=>{

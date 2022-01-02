@@ -18,15 +18,16 @@ export class HomeComponent {
   reset() {
     this.myInputVariable.nativeElement.value= '';
   }
+  
   /** Based on the screen size, switch from standard to one column per row */
-  waste! : File;
+  filename! : File;
   constructor (private http: HttpClient,
     public dialog: MatDialog,
     public loaderService:LoaderService) {}
   
 
   onImageChanged(event : any) {
-    this.waste = event.target.files[0];
+    this.filename = event.target.files[0];
   }
 
   onclick() {
@@ -42,8 +43,8 @@ export class HomeComponent {
 
   newRubbish() {
     const uploadData = new FormData;
-    uploadData.append('waste', this.waste);
-    this.http.post('https://httpbin.org/post', uploadData).toPromise().then((data: any)=> {
+    uploadData.append('filename', this.filename);
+    this.http.post('http://127.0.0.1:8000/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
       this.json = JSON.stringify(data);
     }

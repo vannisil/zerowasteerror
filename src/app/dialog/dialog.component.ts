@@ -6,7 +6,7 @@ import { ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { KeyedRead, ThrowStmt } from '@angular/compiler';
 import { Time } from '@angular/common';
-
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-dialog',
@@ -14,23 +14,24 @@ import { Time } from '@angular/common';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit{
-  public etichetta: any=[];
-
+  public json: any=[];
+  visible:boolean = false;
   reload(){
     window.location.reload();
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    public loaderService: LoaderService) {
    }
 
   ngOnInit(): void {
     this.getData();
-
+    this.visible = !this.visible;
   }
   getData() {
     const url = 'https://jsonplaceholder.typicode.com/users'
-    this.http.get(url).subscribe((res)=>{
-      this.etichetta=res
-      console.log(this.etichetta);
+    this.http.get(url).subscribe((data)=>{
+      this.json=data;
+      console.log(this.json);
     })
   }
 
