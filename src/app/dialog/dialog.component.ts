@@ -14,7 +14,7 @@ import { LoaderService } from '../loader/loader.service';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit{
-  public json: any=[];
+  
   visible:boolean = false;
   reload(){
     window.location.reload();
