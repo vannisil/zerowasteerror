@@ -52,7 +52,7 @@ export class FormComponent {
     }
     getImageForm1() {
       this.id = this.getRandomInt(40,50);
-      this.http.get('http://127.0.0.1:8000/retrieve/', this.id).toPromise().then((data1:any)=>{
+      this.http.get('http://127.0.0.1:8000/retrieve2/?lable=plastica').toPromise().then((data1:any)=>{
         console.log(data1);
         console.log(this.id);
         this.json= JSON.stringify(data1);
