@@ -64,7 +64,8 @@ import { InterceptorService } from './loader/interceptor.service';
     ]),
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true},
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })
