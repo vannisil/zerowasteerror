@@ -20,19 +20,16 @@ export class DialogComponent implements OnInit{
     window.location.reload();
   }
   constructor(private http: HttpClient,
-    public loaderService: LoaderService) {
+    public loaderService: LoaderService,
+    public Home: HomeComponent) {
    }
+   
+   response = this.Home.json;
 
   ngOnInit(): void {
-    this.getData();
     this.visible = !this.visible;
   }
-  getData() {
-    const url = 'https://jsonplaceholder.typicode.com/users'
-    this.http.get(url).subscribe((data)=>{
-      this.json=data;
-      console.log(this.json);
-    })
-  }
+  
+  
 
 }

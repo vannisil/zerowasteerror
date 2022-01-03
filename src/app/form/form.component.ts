@@ -65,7 +65,6 @@ export class FormComponent {
       return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
     addLable = new FormGroup ({
-      id: new FormControl(''),
       waste: new FormControl(''),
       lable: new FormControl(''),
       confidence: new FormControl('')
