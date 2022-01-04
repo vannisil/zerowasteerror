@@ -34,6 +34,7 @@ export class FormComponent {
     formImage:any=[];
     max!: number;
     id!: any;
+    pk!: any;
     waste!: any;
     confidence!: any;
     json: any;
@@ -43,10 +44,10 @@ export class FormComponent {
     }
     
     getImageForm() {
-      this.http.get('http://127.0.0.1:8000/retrieve/').toPromise().then((data: any)=>{
+      this.http.get('http://127.0.0.1:8000/retrieve/', this.pk).toPromise().then((data: any)=>{
         console.log(data);
         this.formImage = data;
-        this.id = this.getRandomInt(80,100);
+        this.pk = this.getRandomInt(80,100);
         console.log(this.id);
       })
     }
@@ -65,6 +66,7 @@ export class FormComponent {
       return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
     addLable = new FormGroup ({
+      id: new FormControl(''),
       waste: new FormControl(''),
       lable: new FormControl(''),
       confidence: new FormControl('')
