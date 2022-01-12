@@ -44,7 +44,7 @@ export class FormComponent {
     }
     
     getImageForm() {
-      this.http.get('http://127.0.0.1:8000/retrieve/', this.pk).toPromise().then((data: any)=>{
+      this.http.get('https://django-cloudrun-f45setczna-uc.a.run.app/list/').toPromise().then((data: any)=>{
         console.log(data);
         this.formImage = data;
         this.pk = this.getRandomInt(80,100);
@@ -53,7 +53,7 @@ export class FormComponent {
     }
     getImageForm1() {
       this.id = this.getRandomInt(40,50);
-      this.http.get('http://127.0.0.1:8000/retrieve2/?lable=plastica').toPromise().then((data1:any)=>{
+      this.http.get('https://django-cloudrun-f45setczna-uc.a.run.app/retrieve2/?lable=undefined').toPromise().then((data1:any)=>{
         console.log(data1);
         console.log(this.id);
         this.json= JSON.stringify(data1);

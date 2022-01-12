@@ -13,13 +13,13 @@ export class RicicloComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Perché è importante riciclare?', cols: 2, rows: 1 },
+          { title: 'COMING SOON!', cols: 2, rows: 1 },
 
         ];
       }
 
       return [
-        { title: 'Perché è importante riciclare?', cols: 2, rows: 1 },
+        { title: 'COMING SOON!', cols: 2, rows: 1 },
       ];
     })
   );

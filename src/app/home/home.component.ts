@@ -44,7 +44,7 @@ export class HomeComponent {
   newRubbish() {
     const uploadData = new FormData;
     uploadData.append('filename', this.filename);
-    this.http.post('http://127.0.0.1:8000/recognition/', uploadData).toPromise().then((data: any)=> {
+    this.http.post('https://django-cloudrun-wnlsr6dhpq-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
       this.json = JSON.stringify(data[0].displayNames).replace('"[\'','').replace('\']"','');
     }
