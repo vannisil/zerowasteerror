@@ -3,24 +3,27 @@
     Poi, clicca sul tasto "Carica!" e scopri dove differenziare il tuo rifiuto!
   </mat-card-title>
   <mat-card-actions>
-    <div>
-    <button mat-button>
+    <div align="center">
+      <img [src]="url" height="200">
+    </div>
+    <div align="center">
+    <button mat-raised-button>
       <label>
         Scegli un'immagine
-        <input #rifiuto type="file" (change)="onImageChanged($event)" hidden/>
+        <input #rifiuto type="file" (change)="onImageChanged($event)" (change)="onselectFile($event)" hidden/>
       </label>
     </button>
-    <button #upload mat-flat-button color="accent" (click)="onclick()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
-      {{ReadMore?"Carica!":"Carica!"}}
+    <button #upload mat-flat-button color="primary" (click)="onclick()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
+      {{ReadMore?"Invia!":"Invia!"}}
     </button>
   </div>
   <div align="end">
-    <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''"(click)="reset()" (click)="onclick()">Annulla</button>
+    <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''" (click)="reload()" (click)="reset()" (click)="onclick()">Annulla</button>
   </div>
-  
   <div *ngIf="loaderService.isLoading | async" class="loader-container">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</div>
+  </div>
+  <!--
   <ng-container *ngIf="visible">
     <div class="center">
       <h4>
@@ -28,6 +31,6 @@
       </h4>
     </div>
   </ng-container>
-  
+-->
   </mat-card-actions>
 </mat-card>

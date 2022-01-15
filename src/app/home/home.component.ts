@@ -11,10 +11,14 @@ import { LoaderService } from '../loader/loader.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  url="https://i.ibb.co/kKxjKmr/130-1307115-garbage-clipart-wastebin-recycle-trash-bin-png-transparent-preview-rev-1.png";
   json!: any;
   ReadMore:boolean = true;
   visible:boolean = false;
   @ViewChild('rifiuto') myInputVariable!:ElementRef;
+  reload(){
+    window.location.reload();
+  }
   reset() {
     this.myInputVariable.nativeElement.value= '';
   }
@@ -35,7 +39,8 @@ export class HomeComponent {
     this.visible = !this.visible;
   }
   openDialog() {
-    let dialogRef = this.dialog.open(DialogComponent);
+    let dialogRef = this.dialog.open(DialogComponent, {
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result is: ${result}')}
       );
@@ -47,7 +52,20 @@ export class HomeComponent {
     this.http.post('https://django-cloudrun-wnlsr6dhpq-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
       this.json = JSON.stringify(data[0].displayNames).replace('"[\'','').replace('\']"','');
+      let dialogRef = this.dialog.open(DialogComponent, {
+        data: {name: this.json},
+        disableClose: true
+      });
     }
     )
+  }
+  onselectFile(e: any) {
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url=event.target.result;
+      }
+    }
   }
 }

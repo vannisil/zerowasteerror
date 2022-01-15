@@ -14,16 +14,16 @@ import { LoaderService } from '../loader/loader.service';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit{
-  
   visible:boolean = false;
   reload(){
     window.location.reload();
   }
   constructor(private http: HttpClient,
     public loaderService: LoaderService,
-    public Home: HomeComponent) {
+    public Home: HomeComponent,
+    @Inject(MAT_DIALOG_DATA) public data: {name: any}) {
    }
-   
+   url: any;
    response = this.Home.json;
 
   ngOnInit(): void {
