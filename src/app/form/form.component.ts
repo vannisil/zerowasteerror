@@ -5,11 +5,20 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AddFormService } from './add-form.service';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0}),
+        animate(1100)
+      ])
+    ])
+  ]
 })
 export class FormComponent {
   /** Based on the screen size, switch from standard to one column per row */

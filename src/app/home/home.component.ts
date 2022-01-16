@@ -4,14 +4,25 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ViewChild } from '@angular/core';
 import { LoaderService } from '../loader/loader.service';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0}),
+        animate(1100)
+      ])
+    ]),
+  ]
 })
 export class HomeComponent {
-  url="https://i.ibb.co/kKxjKmr/130-1307115-garbage-clipart-wastebin-recycle-trash-bin-png-transparent-preview-rev-1.png";
+  url="";
+  url1="https://i.ibb.co/F0bm8X9/trashy-trash.gif";
   json!: any;
   ReadMore:boolean = true;
   visible:boolean = false;
@@ -22,7 +33,6 @@ export class HomeComponent {
   reset() {
     this.myInputVariable.nativeElement.value= '';
   }
-  
   /** Based on the screen size, switch from standard to one column per row */
   filename! : File;
   constructor (private http: HttpClient,
@@ -32,8 +42,12 @@ export class HomeComponent {
 
   onImageChanged(event : any) {
     this.filename = event.target.files[0];
+    this.url1="https://i.ibb.co/Bc30nQN/the-bin-bin.gif";
   }
 
+  onSend(event: any) {
+    this.url1="https://i.ibb.co/7RvPpDw/monophy.gif";
+  }
   onclick() {
     this.ReadMore = !this.ReadMore;
     this.visible = !this.visible;

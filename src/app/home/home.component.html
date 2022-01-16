@@ -1,26 +1,30 @@
 <mat-card>
-  <mat-card-title>Scatta una foto o seleziona un'immagine dalla galleria del tuo dispositivo.
+  <mat-card-title>
+    <div @fade>
+    Scatta una foto o seleziona un'immagine dalla galleria del tuo dispositivo.
     Poi, clicca sul tasto "Carica!" e scopri dove differenziare il tuo rifiuto!
+    </div>
   </mat-card-title>
   <mat-card-actions>
-    <div align="center">
+    <div align="center" @fade>
       <img [src]="url" height="200">
+      <img [src]="url1" height="200">
     </div>
-    <div align="center">
+    <div align="center" @fade>
     <button mat-raised-button>
       <label>
         Scegli un'immagine
         <input #rifiuto type="file" (change)="onImageChanged($event)" (change)="onselectFile($event)" hidden/>
       </label>
     </button>
-    <button #upload mat-flat-button color="primary" (click)="onclick()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
+    <button #upload mat-flat-button style="right: -10px;"color="primary" (click)="onSend($event)" (click)="onclick()" (click)="newRubbish()" [disabled]="rifiuto.value == ''">
       {{ReadMore?"Invia!":"Invia!"}}
     </button>
   </div>
-  <div align="end">
+  <div align="end" @fade>
     <button mat-button #annulla color="accent" [disabled]="rifiuto.value == ''" (click)="reload()" (click)="reset()" (click)="onclick()">Annulla</button>
   </div>
-  <div *ngIf="loaderService.isLoading | async" class="loader-container">
+  <div *ngIf="loaderService.isLoading | async" class="loader-container" @fade>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
   <!--
