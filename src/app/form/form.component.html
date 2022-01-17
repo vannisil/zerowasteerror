@@ -22,53 +22,58 @@
             </button>
           </div>
           <div *ngFor="let formImage of formImage" @fade>
-            <div *ngIf="formImage.id==this.id">
+            <div *ngIf="formImage.id==this.pk">
               <img src="{{formImage.waste}}" style="width: 400px; height: 400px;">
             </div>
           </div>
           </div>
-          <!-- "Div per aggiungere il campo id al file json" -->
+          <!-- "Div per aggiungere il campo id al file json"
            <div [formGroup]="addLable" hidden>
-             <input formControlName="id" id="id" name="id" type="text" [(ngModel)]="id">
+             <input formControlName="pk" id="pk" name="pk" type="text" [(ngModel)]="pk">
             </div>
+            -->
           <!-- fine div per inserire il campo id al json-->
-          <!-- Div per inserire il campo waste al json-->
+
+          <!-- Div per inserire il campo waste al json
           <div [formGroup]="addLable" *ngFor="let formImage of formImage" hidden>
             <div *ngIf="formImage.id==this.id">
             <input formControlName="waste" id="waste" name="waste" type="text" [(ngModel)]="formImage.waste">
            </div>
           </div>
+          -->
+
          <!-- fine div per inserire il campo waste al json-->
-         <!-- Div per inserire il campo confidence al json-->
+         <!-- Div per inserire il campo confidence al json
          <div [formGroup]="addLable" *ngFor="let formImage of formImage" hidden>
           <div *ngIf="formImage.id==this.id">
           <input formControlName="confidence" id="confidence" name="confidence" type="text" [(ngModel)]="formImage.confidence">
           {{formImage.confidence}}
          </div>
         </div>
+        -->
        <!-- fine div per inserire il campo waste al json-->
           <div align="left" style="position: relative; left: 17px; bottom: -10px" @fade>
             <strong>2) Indica il materiale del rifiuto</strong>
           </div>
-          <form [formGroup]="addLable" (ngSubmit)="saveData()">
+          <form [formGroup]="upDispNames">
           <div align="left" style="position: relative; left: 31px; bottom: -15px" @fade>
             <mat-form-field #field appearance="fill">
               <mat-label>Scegli un materiale</mat-label>
-              <mat-select formControlName="lable" >
-                <mat-option value="carta">Carta</mat-option>
-                <mat-option value="Plastica">Plastica</mat-option>
-                <mat-option value="Metallo">Metallo</mat-option>
-                <mat-option value="Vetro">Vetro</mat-option>
+              <mat-select formControlName="displayNames">
+                <mat-option value="CARTA">Carta</mat-option>
+                <mat-option value="PLASTICA">Plastica</mat-option>
+                <mat-option value="METALLO">Metallo</mat-option>
+                <mat-option value="VETRO">Vetro</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
+        </form>
           <div align=" end" @fade>
             <!-- inserire il (click)="reload()" al bottone sotto-->
-            <button mat-raised-button color="primary" >
+            <button mat-raised-button color="primary" (click)="updateDisplayNames(this.pk)">
               Invia
             </button>
           </div>
-        </form>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

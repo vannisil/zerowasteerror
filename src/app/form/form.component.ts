@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Form, FormControl, FormGroup, } from '@angular/forms';
 import { AddFormService } from './add-form.service';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { animate, style, transition, trigger } from '@angular/animations';
@@ -20,7 +20,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
     ])
   ]
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -40,13 +40,19 @@ export class FormComponent {
     public http: HttpClient,
     private addForm: AddFormService) {
     }
+    upDispNames!: FormGroup;
     formImage:any=[];
     max!: number;
     id!: any;
     pk!: any;
     waste!: any;
-    confidence!: any;
     json: any;
+
+    ngOnInit(): void {
+      this.upDispNames = new FormGroup({
+        displayNames: new FormControl()
+      })
+    }
 
     reload(){
       window.location.reload();
@@ -56,17 +62,8 @@ export class FormComponent {
       this.http.get('https://django-cloudrun-f45setczna-uc.a.run.app/list/').toPromise().then((data: any)=>{
         console.log(data);
         this.formImage = data;
-        this.pk = this.getRandomInt(80,100);
-        console.log(this.id);
+        this.pk = 4;
       })
-    }
-    getImageForm1() {
-      this.id = this.getRandomInt(40,50);
-      this.http.get('https://django-cloudrun-f45setczna-uc.a.run.app/retrieve2/?lable=undefined').toPromise().then((data1:any)=>{
-        console.log(data1);
-        console.log(this.id);
-        this.json= JSON.stringify(data1);
-    })
     }
 
     getRandomInt(min:any, max:any) {
@@ -74,18 +71,15 @@ export class FormComponent {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
-    addLable = new FormGroup ({
-      id: new FormControl(''),
-      waste: new FormControl(''),
-      lable: new FormControl(''),
-      confidence: new FormControl('')
-    })
-    saveData() {
-      this.addForm.saveFormData(this.addLable.value).subscribe((result)=>{
-        console.log(result);
+    
+    message = 'Aggiornamento completato!'
+
+    updateDisplayNames(pk: number) {
+      const lable = JSON.stringify(this.upDispNames.value).replace('{"displayNames":"','').replace('"}','');
+      console.log(lable);
+      const newFormData = {id : this.pk, displayNames : lable};
+      this.addForm.updateDisplayNames(pk, newFormData).subscribe((data:any)=>{
+        console.log(this.message)
       });
-    }
-    addText() {
-      
     }
 }
