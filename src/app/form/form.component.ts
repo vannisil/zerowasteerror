@@ -76,7 +76,6 @@ export class FormComponent implements OnInit {
 
     updateDisplayNames(pk: number) {
       const lable = JSON.stringify(this.upDispNames.value).replace('{"displayNames":"','').replace('"}','');
-      console.log(lable);
       const newFormData = {id : this.pk, displayNames : lable};
       this.addForm.updateDisplayNames(pk, newFormData).subscribe((data:any)=>{
         console.log(this.message)
