@@ -6,6 +6,8 @@ import { Form, FormControl, FormGroup, } from '@angular/forms';
 import { AddFormService } from './add-form.service';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form',
@@ -38,7 +40,8 @@ export class FormComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
     public http: HttpClient,
-    private addForm: AddFormService) {
+    private addForm: AddFormService,
+    public dialog: MatDialog) {
     }
     upDispNames!: FormGroup;
     formImage:any=[];
@@ -47,6 +50,7 @@ export class FormComponent implements OnInit {
     pk!: any;
     waste!: any;
     json: any;
+    isShown: boolean = false ;
 
     ngOnInit(): void {
       this.upDispNames = new FormGroup({
@@ -59,13 +63,20 @@ export class FormComponent implements OnInit {
     }
     
     getImageForm() {
-      this.http.get('https://django-cloudrun-f45setczna-uc.a.run.app/list/').toPromise().then((data: any)=>{
+      this.isShown= true;
+      this.pk = this.getRandomInt(1,61);
+      const url = 'https://django-cloudrun-f45setczna-uc.a.run.app/retrieve/?pk='+this.pk;
+      this.http.get(url).toPromise().then((data: any)=>{
         console.log(data);
+        console.log(this.pk);
         this.formImage = data;
-        this.pk = 4;
+        
       })
     }
-
+    openDialog() {
+      let dialogForm = this.dialog.open(DialogFormComponent, {
+      });
+    }
     getRandomInt(min:any, max:any) {
       min = Math.ceil(min);
       max = Math.floor(max);

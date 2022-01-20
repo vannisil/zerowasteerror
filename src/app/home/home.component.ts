@@ -63,7 +63,7 @@ export class HomeComponent {
   newRubbish() {
     const uploadData = new FormData;
     uploadData.append('filename', this.filename);
-    this.http.post('https://django-cloudrun-wnlsr6dhpq-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
+    this.http.post('https://django-cloudrun-f45setczna-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
       this.json = JSON.stringify(data[0].displayNames).replace('"[\'','').replace('\']"','');
       let dialogRef = this.dialog.open(DialogComponent, {

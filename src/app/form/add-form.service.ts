@@ -14,7 +14,7 @@ export class AddFormService {
   }
 
   updateDisplayNames(pk: number, updatedBody: any) {
-    const endpointURL = 'https://django-cloudrun-wnlsr6dhpq-uc.a.run.app/form_upload/?pk='+pk;
+    const endpointURL = 'https://django-cloudrun-f45setczna-uc.a.run.app/form_upload/?pk='+pk;
     return this.http.put(endpointURL, updatedBody)
   }
 }

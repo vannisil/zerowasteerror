@@ -26,6 +26,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { InterceptorService } from './loader/interceptor.service';
+import { DialogFormComponent } from './dialog-form/dialog-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { InterceptorService } from './loader/interceptor.service';
     InizioComponent,
     RicicloComponent,
     FormComponent,
-    DialogComponent
+    DialogComponent,
+    DialogFormComponent
   ],
   entryComponents: [DialogComponent],
   imports: [
