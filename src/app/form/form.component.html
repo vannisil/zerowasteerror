@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="700px">
+  <mat-grid-list cols="2" rowHeight="730px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -21,8 +21,8 @@
               </label>
             </button>
           </div>
-            <div *ngIf="isShown" >
-              <img src="{{formImage.filename}}" style="width: 400px; height: 400px;">
+            <div *ngIf="isShown">
+              <img src="{{formImage.filename}}" style="width: 300px; height: 400px;">
             </div>
           </div>
 
