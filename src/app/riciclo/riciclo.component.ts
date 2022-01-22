@@ -13,13 +13,13 @@ export class RicicloComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'COMING SOON!', cols: 2, rows: 1 },
+          { title: '', cols: 2, rows: 1 },
 
         ];
       }
 
       return [
-        { title: 'COMING SOON!', cols: 2, rows: 1 },
+        { title: '', cols: 2, rows: 1 },
       ];
     })
   );

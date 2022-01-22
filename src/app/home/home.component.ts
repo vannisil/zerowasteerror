@@ -22,7 +22,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 })
 export class HomeComponent {
   url="";
-  url1="https://i.ibb.co/F0bm8X9/trashy-trash.gif";
+  url1="https://i.ibb.co/p3mJfCg/gif1.gif";
   json!: any;
   ReadMore:boolean = true;
   visible:boolean = false;
@@ -42,11 +42,11 @@ export class HomeComponent {
 
   onImageChanged(event : any) {
     this.filename = event.target.files[0];
-    this.url1="https://i.ibb.co/Bc30nQN/the-bin-bin.gif";
+    this.url1="https://i.ibb.co/8mbrkXx/gif2.gif";
   }
 
   onSend(event: any) {
-    this.url1="https://i.ibb.co/7RvPpDw/monophy.gif";
+    this.url1="https://i.ibb.co/rvNGj46/gif3.gif";
   }
   onclick() {
     this.ReadMore = !this.ReadMore;

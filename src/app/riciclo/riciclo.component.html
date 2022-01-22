@@ -1,14 +1,81 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="2" rowHeight="1500px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="font1">
-            {{card.title}}
+            <div align="left">
+            Cos'è il riciclaggio?
+          </div>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div style="margin-left: 17px;" align="left" class="font1"></div>
+<div>
+<p align="left">
+          Il riciclaggio è il processo di raccolta e lavorazione di materiali che altrimenti verrebbero gettati come spazzatura e di trasformarli in nuovi prodotti. Il riciclaggio può apportare benefici alla tua comunità e all'ambiente.
+</p>
+<p align="left">
+  <br>
+         <strong> Vantaggi del riciclaggio:</strong>
+         <br>
+<br> •	Riduce la quantità di rifiuti inviati a discariche e inceneritori;
+<br> •	Conserva le risorse naturali come legname, acqua e minerali;
+<br> •	Aumenta la sicurezza economica sfruttando una fonte domestica di materiali;
+<br> •	Previene l'inquinamento riducendo la necessità di raccogliere nuove materie prime;
+<br> •	Risparmia energia;
+<br> •	Supporta la produzione americana e conserva risorse preziose;
+<br> •	Aiuta a creare posti di lavoro nelle industrie di riciclaggio e manifatturiere negli Stati Uniti.
+</p>
+<p align="left">
+  <br>
+<strong>Passaggi per il riciclaggio dei materiali</strong>
+
+<br> <br> Il riciclaggio include i tre passaggi seguenti, che creano un ciclo continuo, rappresentato dal familiare simbolo di riciclaggio.
+<br> <br> <strong><em> Passaggio 1: raccolta ed elaborazione</em></strong>
+<br> Esistono diversi metodi per la raccolta dei materiali riciclabili, tra cui la raccolta sul marciapiede, i centri di riconsegna e i programmi di deposito o rimborso.
+Dopo la raccolta, i materiali riciclabili vengono inviati a un impianto di recupero per essere selezionati, puliti e trasformati in materiali che possono essere utilizzati nella produzione. I materiali riciclabili vengono acquistati e venduti proprio come farebbero le materie prime e i prezzi salgono e scendono a seconda della domanda e dell'offerta negli Stati Uniti e nel mondo.
+<br> <br> <strong><em>Passaggio 2: produzione</em></strong>
+<br> Sempre più prodotti di oggi vengono fabbricati con contenuto riciclato. Gli articoli per la casa comuni che contengono materiali riciclati includono quanto segue:
+<br>•	Quotidiani e salviette di carta;
+<br>•	Contenitori per bibite in alluminio, plastica e vetro;
+<br>•	Lattine d'acciaio;
+<br>•	Bottiglie di detersivo per bucato in plastica.
+<br>
+I materiali riciclati vengono utilizzati anche in modi nuovi, come il vetro recuperato nell'asfalto per pavimentare strade o la plastica recuperata nella moquette e nelle panchine dei parchi.
+<br> <br> <strong><em> Passaggio 3: acquisto di nuovi prodotti realizzati con materiali riciclati</em></strong>
+<br>Contribuisci a chiudere il ciclo del riciclaggio acquistando nuovi prodotti realizzati con materiali riciclati. Ci sono migliaia di prodotti che contengono contenuto riciclato. Quando vai a fare la spesa, cerca quanto segue:
+<br><em> •	Prodotti facilmente riciclabili; </em>
+<br><em> •	Prodotti che contengono contenuto riciclato;</em>
+<br> <br>Di seguito sono riportati alcuni dei termini utilizzati:
+<br> <em> •	Prodotto con contenuto riciclato</em> - Il prodotto è stato fabbricato con materiali riciclati raccolti da un programma di riciclaggio o da rifiuti recuperati durante il normale processo di produzione. L'etichetta a volte includerà quanto del contenuto proveniva da materiali riciclati.
+<br><em> •	Contenuto post-consumo</em> - Molto simile al contenuto riciclato, ma il materiale proviene solo da materiali riciclabili raccolti da consumatori o aziende attraverso un programma di riciclaggio.
+<br><em> •	Prodotto riciclabile </em>- Prodotti che possono essere raccolti, trasformati e trasformati in nuovi prodotti dopo che sono stati utilizzati. Questi prodotti non contengono necessariamente materiali riciclati. Ricorda che non tutti i tipi di materiali riciclabili possono essere raccolti nella tua comunità, quindi assicurati di verificare con il tuo programma di riciclaggio locale prima di acquistare.
+<br><br>Alcuni dei prodotti comuni che puoi trovare che possono essere realizzati con contenuto riciclato includono quanto segue:
+<br>•	Barattoli di alluminio;
+<br>•	Paraurti per auto;
+<br>•	Moquette;
+<br>•	Scatole di cereali;
+<br>•	Fumetti;
+<br>•	Cartoni per uova;
+<br>•	Contenitori di vetro;
+<br>•	Bottiglie di detersivo per bucato;
+<br>•	Olio motore;
+<br>•	Chiodo;
+<br>•	Giornali;
+<br>	Tovaglioli di carta;
+<br>•	Prodotti siderurgici;
+<br>•	Sacchetti della spazzatura.
+</p>
+<p align="left">
+<strong> Il riciclaggio crea posti di lavoro</strong>
+<br> L'EPA ha pubblicato risultati significativi sui vantaggi economici dell'industria del riciclaggio con un aggiornamento dello studio nazionale Recycling Economic Information (REI) nel 2016. Questo studio analizza il numero di posti di lavoro, salari e entrate fiscali attribuiti al riciclaggio. Lo studio ha rilevato che in un solo anno, le attività di riciclaggio e riutilizzo negli Stati Uniti hanno rappresentato:
+<br>•	681.000 posti di lavoro;
+<br>•	$ 37,8 miliardi di salari;
+<br>•	$ 5,5 miliardi di entrate fiscali.
+<br>Ciò equivale a 1,17 posti di lavoro per 1.000 tonnellate di materiali riciclati e $ 65,23 di salari e $ 9,42 di entrate fiscali per ogni tonnellata di materiali riciclati.
+</p>
+</div>
+
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
