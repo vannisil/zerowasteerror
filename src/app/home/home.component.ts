@@ -5,7 +5,8 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { ViewChild } from '@angular/core';
 import { LoaderService } from '../loader/loader.service';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-
+import { WrongPredictionService } from './wrong-prediction.service';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 export class HomeComponent {
   url="";
   url1="https://i.ibb.co/p3mJfCg/gif1.gif";
+  ids : any;
   json!: any;
   ReadMore:boolean = true;
   visible:boolean = false;
@@ -37,7 +39,8 @@ export class HomeComponent {
   filename! : File;
   constructor (private http: HttpClient,
     public dialog: MatDialog,
-    public loaderService:LoaderService) {}
+    public loaderService:LoaderService,
+    public wrongPredictionService: WrongPredictionService) {}
   
 
   onImageChanged(event : any) {
@@ -65,14 +68,29 @@ export class HomeComponent {
     uploadData.append('filename', this.filename);
     this.http.post('https://django-cloudrun-f45setczna-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
+      this.ids = JSON.stringify(data[0].id);
       this.json = JSON.stringify(data[0].displayNames).replace('"[\'','').replace('\']"','');
       let dialogRef = this.dialog.open(DialogComponent, {
-        data: {name: this.json},
+        data: {name: this.json,
+              ids: this.ids},
         disableClose: true
       });
     }
     )
   }
+  wrongPred (pk: number) {
+    pk = this.ids;
+    const newFormData = {id : this.ids, displayNames : "undefined"};
+    this.wrongPredictionService.sendWrongPred(pk, newFormData);
+  }
+
+  savePred (pk: number) {
+    pk = this.ids;
+    const lable = this.json;
+    const newFormData = {id: this.ids, displayNames: lable}
+    this.wrongPredictionService.savePred(pk, newFormData);
+  }
+
   onselectFile(e: any) {
     if(e.target.files){
       var reader = new FileReader();

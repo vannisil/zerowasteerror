@@ -64,7 +64,7 @@ export class FormComponent implements OnInit {
     
     getImageForm() {
       this.isShown= true;
-      this.pk = this.getRandomInt(1,61);
+      this.pk = this.getRandomInt(134,158);
       const url = 'https://django-cloudrun-f45setczna-uc.a.run.app/retrieve/?pk='+this.pk;
       this.http.get(url).toPromise().then((data: any)=>{
         console.log(data);

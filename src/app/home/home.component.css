@@ -31,3 +31,7 @@
   width: 100%;
   z-index: 99;
 }
+
+.matcard {
+  background-color: #fcfcfc;
+}
