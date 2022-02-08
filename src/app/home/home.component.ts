@@ -68,8 +68,7 @@ export class HomeComponent {
     uploadData.append('filename', this.filename);
     this.http.post('https://django-cloudrun-f45setczna-uc.a.run.app/recognition/', uploadData).toPromise().then((data: any)=> {
       console.log(data);
-      this.ids = JSON.stringify(data[0].id);
-      this.json = JSON.stringify(data[0].displayNames).replace('"[\'','').replace('\']"','');
+      this.json = JSON.stringify(data.displayNames).replace('"[\'','').replace('\']"','');
       let dialogRef = this.dialog.open(DialogComponent, {
         data: {name: this.json,
               ids: this.ids},
